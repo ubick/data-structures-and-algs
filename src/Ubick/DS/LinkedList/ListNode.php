@@ -15,7 +15,7 @@ class ListNode
         return $this->value;
     }
 
-    public function setNext(ListNode $node) {
+    public function setNext(?ListNode $node) {
         $this->next = $node;
     }
 

@@ -43,4 +43,29 @@ class SinglyLinkedList
 
         return $arr;
     }
+
+    public function remove($value)
+    {
+        if ($this->head === null) {
+            return;
+        }
+
+        if ($this->head->getValue() === $value) {
+            $this->head = $this->head->getNext();
+            return;
+        }
+
+        $prev = $this->head;
+        $node = $this->head->getNext();
+
+        while ($node !== null) {
+            if ($node->getValue() === $value) {
+                $prev->setNext($node->getNext());
+                return;
+            }
+
+            $prev = $node;
+            $node = $node->getNext();
+        }
+    }
 }

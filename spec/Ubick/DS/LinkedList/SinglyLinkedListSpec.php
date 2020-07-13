@@ -22,4 +22,35 @@ class SinglyLinkedListSpec extends ObjectBehavior
 
         $this->asArray()->shouldBeLike([7, 2]);
     }
+
+    function it_removes_a_node_by_value()
+    {
+        $this->insert(7);
+        $this->insert(2);
+        $this->insert(1);
+        $this->insert(3);
+        $this->remove(1);
+
+        $this->asArray()->shouldBeLike([7, 2, 3]);
+    }
+
+    function it_removes_the_head()
+    {
+        $this->insert(7);
+        $this->insert(2);
+        $this->insert(1);
+        $this->remove(7);
+
+        $this->asArray()->shouldBeLike([2, 1]);
+    }
+
+    function it_removes_the_last_value()
+    {
+        $this->insert(7);
+        $this->insert(2);
+        $this->insert(1);
+        $this->remove(1);
+
+        $this->asArray()->shouldBeLike([7, 2]);
+    }
 }
