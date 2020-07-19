@@ -31,6 +31,24 @@ class BinarySearchTree
         }
     }
 
+    public function inOrder(callable $f) {
+        if ($this->root) {
+            $this->root->inOrder($f);
+        }
+    }
+
+    public function preOrder(callable $f) {
+        if ($this->root) {
+            $this->root->preOrder($f);
+        }
+    }
+
+    public function postOrder(callable $f) {
+        if ($this->root) {
+            $this->root->postOrder($f);
+        }
+    }
+
     public function asArray(): array {
         $queue = new ArrayQueue();
         $list = [];

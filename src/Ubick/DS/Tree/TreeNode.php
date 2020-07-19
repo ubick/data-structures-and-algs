@@ -27,4 +27,41 @@ class TreeNode
             }
         }
     }
+
+    public function inOrder(callable $f) {
+        if ($this->left) {
+            $this->left->inOrder($f);
+        }
+
+        $f($this);
+
+        if ($this->right) {
+            $this->right->inOrder($f);
+        }
+    }
+
+    public function preOrder(callable $f) {
+        $f($this);
+
+        if ($this->left) {
+            $this->left->preOrder($f);
+        }
+
+        if ($this->right) {
+            $this->right->preOrder($f);
+        }
+    }
+
+    public function postOrder(callable $f) {
+        if ($this->left) {
+            $this->left->postOrder($f);
+        }
+
+        if ($this->right) {
+            $this->right->postOrder($f);
+        }
+
+        $f($this);
+
+    }
 }

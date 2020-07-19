@@ -24,4 +24,47 @@ class BinarySearchTreeSpec extends ObjectBehavior
 
         $this->asArray()->shouldBeLike($values);
     }
+
+    function it_traverses_in_order()
+    {
+        $values = [8, 3, 12, 5, 10, 15, 13];
+        $tree = BinarySearchTree::fromList($values);
+        $list = [];
+        $tree->inOrder(function ($n) use (&$list) {
+            $list[] = $n->value;
+        });
+
+        if ($list != [3, 5, 8, 10, 12, 13, 15]) {
+            throw new \Exception("Lists did not match");
+        }
+    }
+
+    function it_traverses_pre_order()
+    {
+        $values = [8, 3, 12, 5, 10, 15, 11];
+        $tree = BinarySearchTree::fromList($values);
+        $list = [];
+        $tree->preOrder(function ($n) use (&$list) {
+            $list[] = $n->value;
+        });
+
+        if ($list != [8, 3, 5, 12, 10, 11, 15]) {
+            throw new \Exception("Lists did not match");
+        }
+    }
+
+    function it_traverses_post_order()
+    {
+        $values = [8, 3, 12, 5, 10, 15, 11];
+        $tree = BinarySearchTree::fromList($values);
+        $list = [];
+
+        $tree->postOrder(function ($n) use (&$list) {
+            $list[] = $n->value;
+        });
+
+        if ($list != [5, 3, 11, 10, 15, 12, 8]) {
+            throw new \Exception("Lists did not match");
+        }
+    }
 }
