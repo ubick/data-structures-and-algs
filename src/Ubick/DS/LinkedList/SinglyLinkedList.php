@@ -68,4 +68,25 @@ class SinglyLinkedList
             $node = $node->getNext();
         }
     }
+
+    public function reverse()
+    {
+        $this->reverseRec($this->head);
+    }
+
+    private function reverseRec(ListNode $n)
+    {
+        $next = $n->getNext();
+
+        if ($next === null) {
+            $this->head = $n;
+
+            return $n;
+        }
+
+        $this->reverseRec($next)->setNext($n);
+        $n->setNext(null);
+
+        return $n;
+    }
 }

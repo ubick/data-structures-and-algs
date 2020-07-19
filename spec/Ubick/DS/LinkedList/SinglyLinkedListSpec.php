@@ -53,4 +53,14 @@ class SinglyLinkedListSpec extends ObjectBehavior
 
         $this->asArray()->shouldBeLike([7, 2]);
     }
+
+    function it_reverses_all_nodes() {
+        $this->insert(7);
+        $this->insert(2);
+        $this->insert(1);
+        $this->insert(5);
+        $this->reverse();
+
+        $this->asArray()->shouldBeLike([5, 1, 2, 7]);
+    }
 }
