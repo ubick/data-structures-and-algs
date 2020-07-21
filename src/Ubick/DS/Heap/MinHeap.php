@@ -2,7 +2,7 @@
 
 namespace Ubick\DS\Heap;
 
-class MaxHeap
+class MinHeap
 {
     private $list = [];
 
@@ -26,7 +26,7 @@ class MaxHeap
         
         $parentIdx = floor(($idx - 1) / 2);
 
-        while ($parentIdx >= 0 && $this->list[$parentIdx] < $val) {
+        while ($parentIdx >= 0 && $this->list[$parentIdx] > $val) {
             $this->swap($idx, $parentIdx);
 
             $idx = $parentIdx;
@@ -40,7 +40,7 @@ class MaxHeap
         $this->list[$idx] = $tmp;
     }
 
-    public function max()
+    public function min()
     {
         return $this->list[0];
     }
@@ -50,11 +50,11 @@ class MaxHeap
         $right = $idx * 2 + 2;
         $largest = $idx;
 
-        if ($left < count($this->list) && $this->list[$left] > $this->list[$largest]) {
+        if ($left < count($this->list) && $this->list[$left] < $this->list[$largest]) {
             $largest = $left;
         }
 
-        if ($right < count($this->list) && $this->list[$right] > $this->list[$largest]) {
+        if ($right < count($this->list) && $this->list[$right] < $this->list[$largest]) {
             $largest = $right;
         }
 
@@ -72,4 +72,7 @@ class MaxHeap
         $this->heapify(0);
     }
 
+    public function size() {
+        return count($this->list);
+    }
 }
