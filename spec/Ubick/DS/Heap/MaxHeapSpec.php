@@ -28,4 +28,10 @@ class MaxHeapSpec extends ObjectBehavior
 
         $this->max()->shouldBeLike(7);
     }
+
+    function it_builds_a_heap_from_array() {
+        $this->beConstructedFromArray([2,5,7,9,13]);
+
+        $this->max()->shouldBeLike(13);
+    }
 }

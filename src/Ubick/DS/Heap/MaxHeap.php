@@ -6,6 +6,18 @@ class MaxHeap
 {
     private $list = [];
 
+    // implement from array and heap sort
+    public static function fromArray(array $array)
+    {
+        $instance = new self();
+
+        // wrong
+        $instance->list = $array;
+        $instance->heapify(0);
+
+        return $instance;
+    }
+
     public function insert($val)
     {
         $idx = count($this->list);
